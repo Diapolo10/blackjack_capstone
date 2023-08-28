@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import random
-from enum import Enum
+from typing import NamedTuple
 
 from config import (
     CardValueType,
@@ -14,7 +14,7 @@ from config import (
 )
 
 
-class Card(str, Enum):
+class Card(NamedTuple):
     value: CardValueType
     suit: CardSuitType
 
