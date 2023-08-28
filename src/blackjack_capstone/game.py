@@ -21,24 +21,24 @@ class Game:
         self.screen.add_heavy_line()
 
         return start_game == 'y'
-    
+
     def show_hands(self, human: Player, computer: Player, is_cpu_turn: bool):
         self.screen.show_message(f"Your hand is [{self.screen.printable_hands(human, is_cpu_turn)}]")
         self.screen.show_message(f"Your score is {self.pc.calculate_score(human)} points.")
         self.screen.show_message(f"{computer.name}'s hand is [{self.screen.printable_hands(computer, is_cpu_turn)}]")
         self.screen.add_single_line()
-        
-    
+
+
     def ask_username(self) -> str:
         """Asks user name from user input"""
 
         return self.screen.get_input("What is your name?")
-    
+
     def create_player(self, player_type: PlayerType, name: str = "Computer") -> Player:
         """Creates player of chosen type. Available types are human and computer, other arguments will return None"""
 
         return Player(name, player_type)
-        
+
     def cpu_turn(self, human_player: Player, computer_player: Player, is_cpu_turn: bool = True) -> bool:
         """CPU moving (auto draw if less than 17). Stand if >= 17. Returns True if bust and False if not bust"""
 
@@ -49,7 +49,7 @@ class Game:
             cpu_bust = self.pc.is_bust(computer_player)    
             if cpu_bust:
                 return True
-            
+
         self.screen.show_message("Computer stands.")
         self.screen.show_message(f"Computer hand is {self.pc.calculate_score(computer_player)}")
         return False
@@ -86,7 +86,7 @@ class Game:
             #shuffle deck
             self.deck.shuffle()
             # deal cards
-          
+
             human_player.add_card(self.deck.deal_card())
             human_player.add_card(self.deck.deal_card())
 
@@ -113,7 +113,7 @@ class Game:
             self.screen.show_message(f"Computer score is {computer_player.score}")
             self.screen.add_heavy_line()
             self.show_hands(human_player, computer_player, False)
-            
+
 
             # ask player to deal
             human_is_bust = False
@@ -126,17 +126,17 @@ class Game:
                     computer_player.update_score()
                     human_is_bust = True
                     break
-            
+
             if not human_is_bust:
                 self.show_hands(human_player, computer_player, False)
-            
+
                 # create logic for cpu to auto play
                 cpu_is_bust = self.cpu_turn(human_player, computer_player, True)
 
                 if not cpu_is_bust:
                     # compare results
                     winner = self.pc.get_winner(human_player, computer_player)
-           
+
                     if winner is None:
                         self.screen.show_message("It's a tie!")
                     else:
@@ -150,7 +150,5 @@ class Game:
 
             # ask if user wants to play again
             is_game_on = self.ask_new_game()
-        
+
         self.screen.show_message("Thanks for playing! Goodbye!")
-        
-        

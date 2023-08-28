@@ -32,4 +32,3 @@ class Screen:
     @classmethod
     def add_single_line(cls, length: int = 4):
         cls.show_message('-' * length)
-

@@ -30,6 +30,3 @@ class Player:
 
     def clear_hand(self):
         self.hand = []
-
-    
-    

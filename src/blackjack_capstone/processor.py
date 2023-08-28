@@ -23,7 +23,7 @@ class Processor:
             total -= 10
 
         return total
-    
+
     @classmethod
     def get_winner(cls, human: Player, computer: Player) -> Player | None:
         """Returns object of winner, None if tie"""
@@ -44,7 +44,7 @@ class Processor:
         """Checks if player has more than 21"""
 
         return cls.calculate_score(player) > BLACKJACK
-    
+
     def hand_is_blackjack(cls, player: Player) -> bool:
         """Checks if dealt hand is blackjack and returns true or false"""
 
