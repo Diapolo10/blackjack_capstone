@@ -23,7 +23,7 @@ class Card(str, Enum):
 
 
 class Deck:
-    '''Class Deck provides deck functionality, such as create deck, shuffle etc.'''
+    """Class Deck provides deck functionality, such as create deck, shuffle etc."""
 
     def __init__(self, card_count: int = CARD_COUNT):
         self.card_count = card_count
